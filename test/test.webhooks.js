@@ -3,6 +3,7 @@ var express      = require('express')
   , integrations = require('..')
   , helpers      = require('./helpers')
   , should       = require('should')
+  , transform    = require('segmentio-transform-legacy')
   , webhook      = new integrations.Webhooks();
 
 
@@ -70,7 +71,7 @@ function testApiCall (call) {
       app.post(route, function (req, res, next) {
         var json = message.json();
         json.options = json.options || json.context;
-        delete json.context;
+        transform(json);
 
         serialized(req.body).should.eql(serialized(json));
         res.send();
@@ -90,7 +91,7 @@ function testApiCall (call) {
       app.post(route, function (req, res, next) {
         var json = message.json();
         json.options = json.options || json.context;
-        delete json.context;
+        transform(json);
         serialized(req.body).should.eql(serialized(json));
         res.send(status);
       });

@@ -27,7 +27,8 @@
     "convert-dates": "~0.1.0",
     "isodate-traverse": "~0.3.0",
     "date-math": "0.0.1",
-    "merge-util": "^0.1.0"
+    "merge-util": "^0.1.0",
+    "segmentio-transform-legacy": "^2.0.0"
   },
   "devDependencies": {
     "should": "~1.2.2",
